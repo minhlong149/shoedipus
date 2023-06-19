@@ -30,7 +30,7 @@ Your application should have at least features in [Must have](#must-have), thing
 
 - Responsive design (look good on all devices: desktops, tablets & mobile phones).
 - Smooth animations (don't really need to be same as the demo, just do what you think is good).
-- Deploy the application to heroku.
+- Deploy the application to [render](https://render.com/).
 
 # Technical Requirements
 
@@ -38,7 +38,7 @@ You can use any front-end library/framework like React, Angular, Vue, ... or jus
 
 - Products data:
   - [`./app/data/shoes.json`](./app/data/shoes.json)
-  - If you can code a simple APIs server on NodeJS-Express/ NestJS + PostgreSQL/ MongoDB, it's a plus. But it's not required. The APIs server should have these APIs:
+  - If you can code a simple server on NodeJS-Express/ NestJS + PostgreSQL/ MongoDB, it's a plus. But it's not required. The APIs server should have these APIs:
       - GET `/api/v1/products`: Get all products
       - GET `/api/v1/products/:id`: Get a product by id
       - POST `/api/v1/products`: Create a new product
