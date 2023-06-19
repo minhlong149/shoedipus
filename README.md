@@ -1,10 +1,11 @@
 # G-Sneaker
 
-This is the instruction for web developer intern assignment at [Golden Owl](https://goldenowl.asia). You will build a simple shopping cart.
+This is the instruction for JS developer intern assignment at [Golden Owl](https://goldenowl.asia). You will build a simple shopping cart.
 
 ![Screenshot](./screenshots/screenshot.jpg)
 
-[Live Demo](https://gshoes.vercel.app)
+[Mobile Demo](./screenshots/mobile-demo.gif)
+[Desktop Demo](./screenshots/desktop-demo.gif)
 
 # Requirements
 
@@ -23,7 +24,7 @@ Your application should have at least features in [Must have](#must-have), thing
   - Show total price of all products in car. When user increase/decrease product's amount or remove product, total price should be re-calculate correctly.
   - When there are no products in cart, we should show `Your cart is empty` message.
   - Products in cart should be persistent: When user visit the application, products are added before should be showed, user don't need to add products again.
-- UI must follow correctly design from [live demo](https://gshoes.vercel.app).
+- UI must follow correctly design from [desktop demo](./screenshots/desktop-demo.gif) and [mobile demo](./screenshots/mobile-demo.gif).
 
 ### Nice to have:
 
@@ -37,6 +38,12 @@ You can use any front-end library/framework like React, Angular, Vue, ... or jus
 
 - Products data:
   - [`./app/data/shoes.json`](./app/data/shoes.json)
+  - If you can code a simple APIs server on NodeJS-Express/ NestJS + PostgreSQL/ MongoDB, it's a plus. But it's not required. The APIs server should have these APIs:
+      - GET `/api/v1/products`: Get all products
+      - GET `/api/v1/products/:id`: Get a product by id
+      - POST `/api/v1/products`: Create a new product
+      - PUT `/api/v1/products/:id`: Update a product by id
+      - DELETE `/api/v1/products/:id`: Delete a product by id
 - Images & icons:
   - [`./app/assets`](./app/assets)
   - Product images are fetched directly from remote url in data
@@ -47,6 +54,14 @@ You can use any front-end library/framework like React, Angular, Vue, ... or jus
   - `Black: #303841`
   - `Gray: #777777`
   - `Yellow: #F6C90E`
+- CSS Properties:
+  - `Border Radius: 28px`
+  - `Card Padding: 12px 28px`
+  - `Spacing between 2 Cards: 40px`
+  - `Circle Product Item Size In Cart: 90px`
+  - `Plus, Minus, Remove Button Size: 28px`
+  - `Spacing between 2 Product Items in Your Cart: 40px`
+  - `Spacing between 2 Product Items in Our Products: 80px`
 
 # Submission
 
@@ -62,3 +77,4 @@ Don't forget to add `README.md` which includes guide to run your project locally
 # Contributors
 
 - Ben (from GO): [tranquangvu](https://github.com/tranquangvu)
+- Leo (from GO): [im-leeou](https://github.com/im-leeou)
