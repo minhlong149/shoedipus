@@ -1,11 +1,21 @@
-import express from "express";
+import mongoose from "mongoose";
 
-const app = express();
+import app from "./app.js";
 
-const PORT = process.env.PORT || 3000;
+import config from "./utils/config.js";
+import logger from "./utils/logger.js";
 
-app.use(express.static("dist"));
+const PORT = config.PORT;
+const MONGODB_URI = config.MONGODB_URI;
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => {
+    logger.info("Connected to MongoDB");
+    app.listen(PORT, () => {
+      logger.info(`Server is listening on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    logger.error("Error connecting to MongoDB", error.message);
+  });
