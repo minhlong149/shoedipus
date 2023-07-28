@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import Cart from "./components/Cart.jsx";
 import Products from "./components/Products.jsx";
 
 import * as productService from "./services/products.js";
@@ -42,7 +43,12 @@ function App() {
     return <h1>Something went wrong</h1>;
   }
 
-  return <Products products={products} addToCart={addToCart} />;
+  return (
+    <main>
+      <Products products={products} addToCart={addToCart} />
+      <Cart cart={cart} />
+    </main>
+  );
 }
 
 export default App;
