@@ -2,6 +2,8 @@ import React from "react";
 
 import CartItem from "./CartItem.jsx";
 
+import logoImage from "../assets/nike.png";
+
 export default function Cart({
   cart,
   removeFromCart,
@@ -18,12 +20,13 @@ export default function Cart({
   );
 
   return (
-    <div className="cart-container">
-      <div className="cart-header">
-        <h1>Your Cart</h1>
-        <p>Total: {totalPrice}</p>
-      </div>
-      <div className="cart-list">
+    <section className="cart-container">
+      <section className="cart-header">
+        <img src={logoImage} className="header-logo" alt="nike-logo" />
+        <h1 className="header-title">Your Cart</h1>
+        <span className="header-subtitle">{totalPrice}</span>
+      </section>
+      <section className="cart-list">
         {cart.map((product) => (
           <CartItem
             key={product.id}
@@ -33,7 +36,7 @@ export default function Cart({
             decreaseQuantity={decreaseQuantity}
           />
         ))}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }
