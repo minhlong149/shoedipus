@@ -13,6 +13,22 @@ const cartReducer = (cart, action) => {
     case "remove": {
       return cart.filter((product) => product.id !== action.product.id);
     }
+    case "increase": {
+      return cart.map((product) => {
+        if (product.id === action.product.id) {
+          return { ...product, quantity: product.quantity + 1 };
+        }
+        return product;
+      });
+    }
+    case "decrease": {
+      return cart.map((product) => {
+        if (product.id === action.product.id) {
+          return { ...product, quantity: product.quantity - 1 };
+        }
+        return product;
+      });
+    }
   }
 };
 
@@ -51,7 +67,15 @@ function App() {
     setProducts(
       products.map((p) => (p.id === product.id ? { ...p, inCart: false } : p))
     );
-  }
+  };
+
+  const increaseQuantity = (product) => {
+    dispatchCart({ type: "increase", product });
+  };
+
+  const decreaseQuantity = (product) => {
+    dispatchCart({ type: "decrease", product });
+  };
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -64,7 +88,12 @@ function App() {
   return (
     <main>
       <Products products={products} addToCart={addToCart} />
-      <Cart cart={cart} removeFromCart={removeFromCart} />
+      <Cart
+        cart={cart}
+        removeFromCart={removeFromCart}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+      />
     </main>
   );
 }

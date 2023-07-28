@@ -2,7 +2,7 @@ import React from "react";
 
 import CartItem from "./CartItem.jsx";
 
-export default function Cart({ cart, removeFromCart }) {
+export default function Cart({ cart, removeFromCart, increaseQuantity, decreaseQuantity }) {
   if (cart.length === 0) {
     return <h1>Your cart is empty</h1>;
   }
@@ -21,6 +21,8 @@ export default function Cart({ cart, removeFromCart }) {
           key={product.id}
           product={product}
           removeFromCart={removeFromCart}
+          increaseQuantity={increaseQuantity}
+          decreaseQuantity={decreaseQuantity}
         />
       ))}
     </div>
