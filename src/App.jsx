@@ -1,13 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 import Cart from "./components/Cart.jsx";
 import Products from "./components/Products.jsx";
 
 import * as productService from "./services/products.js";
 
+const cartReducer = (cart, action) => {
+  switch (action.type) {
+    case "add": {
+      return [{ ...action.product, quantity: 1 }, ...cart];
+    }
+    case "remove": {
+      return cart.filter((product) => product.id !== action.product.id);
+    }
+  }
+};
+
 function App() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, dispatchCart] = useReducer(cartReducer, []);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -29,11 +40,18 @@ function App() {
   }, []);
 
   const addToCart = (product) => {
-    setCart((cart) => [...cart, { ...product, quantity: 1 }]);
+    dispatchCart({ type: "add", product });
     setProducts(
       products.map((p) => (p.id === product.id ? { ...p, inCart: true } : p))
     );
   };
+
+  const removeFromCart = (product) => {
+    dispatchCart({ type: "remove", product });
+    setProducts(
+      products.map((p) => (p.id === product.id ? { ...p, inCart: false } : p))
+    );
+  }
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -46,7 +64,7 @@ function App() {
   return (
     <main>
       <Products products={products} addToCart={addToCart} />
-      <Cart cart={cart} />
+      <Cart cart={cart} removeFromCart={removeFromCart} />
     </main>
   );
 }

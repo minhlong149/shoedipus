@@ -2,7 +2,7 @@ import React from "react";
 
 import CartItem from "./CartItem.jsx";
 
-export default function Cart({ cart }) {
+export default function Cart({ cart, removeFromCart }) {
   if (cart.length === 0) {
     return <h1>Your cart is empty</h1>;
   }
@@ -17,7 +17,11 @@ export default function Cart({ cart }) {
       <h1>Your Cart</h1>
       <p>Total: {totalPrice}</p>
       {cart.map((product) => (
-        <CartItem key={product.id} product={product} />
+        <CartItem
+          key={product.id}
+          product={product}
+          removeFromCart={removeFromCart}
+        />
       ))}
     </div>
   );

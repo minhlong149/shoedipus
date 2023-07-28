@@ -1,4 +1,4 @@
-export default function CartItem({ product }) {
+export default function CartItem({ product, removeFromCart }) {
   const { name, image, description, price, color, quantity } = product;
   return (
     <div>
@@ -7,6 +7,7 @@ export default function CartItem({ product }) {
       <p>{price}</p>
       <img src={image} alt={name} />
       <p>{quantity}</p>
+      <button onClick={() => removeFromCart(product)}>Remove from cart</button>
     </div>
   );
 }
