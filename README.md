@@ -1,80 +1,64 @@
 # G-Sneaker
 
-This is the instruction for JS developer intern assignment at [Golden Owl](https://goldenowl.asia). You will build a simple shopping cart.
+A simple shopping cart as part of GO Intern Assignment.
 
-![Screenshot](./screenshots/screenshot.jpg)
+## Table of Contents
 
-[Mobile Demo](./screenshots/mobile-demo.gif)
-[Desktop Demo](./screenshots/desktop-demo.gif)
+- [G-Sneaker](#g-sneaker)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Features](#features)
+  - [UI Design](#ui-design)
+  - [Authors](#authors)
 
-# Requirements
+## Getting Started
 
-Your application should have at least features in [Must have](#must-have), things in [Nice to have](#nice-to-have) is optional (but yeah, it's attractive if you have).
+After cloning the project, install all the dependencies, then build the project and run the server. *I'm using `yarn` as my package manager, but `npm` should work just fine.*
 
-### Must have:
+```bash
+yarn
+yarn build
+yarn start
+```
 
-- Display all products in `Our Products` section (for products data please check from [Technical Requirements](#technical-requirements)):
-  - Single product should have name, description, price, image and `Add To Cart` button.
-  - User able to click on `Add To Cart` to add target product to their cart.
-  - Added product doesn't have `Add To Cart` button anymore, it should have `Check Mark Icon (✓)` instead.
+> You can also use `yarn dev` to run the server in development mode.
+
+## Features
+
+- Display all products data in `Our Products` section:
+  - Each product will have name, description, price, image and `Add To Cart` button.
+  - User are able to click on `Add To Cart` button to add the target product to their cart. Added product will have a check mark icon instead.
+
 - Display all added products in `Your Cart` section:
   - Each product in cart should have name, price, image, increase/decrease amount button and remove button.
-  - User able to increase/decrease amount of a product in cart. When product's amount is decreased to zero, that product will be removed from cart naturally.
-  - User able to remove product from cart.
+  - User are able to increase/decrease amount of a product in cart. When product's amount is decreased to zero, that product will be removed from cart naturally.
+  - User able to remove a product from cart.
   - Show total price of all products in car. When user increase/decrease product's amount or remove product, total price should be re-calculate correctly.
   - When there are no products in cart, we should show `Your cart is empty` message.
-  - Products in cart should be persistent: When user visit the application, products are added before should be showed, user don't need to add products again.
-- UI must follow correctly design from [desktop demo](./screenshots/desktop-demo.gif) and [mobile demo](./screenshots/mobile-demo.gif).
 
-### Nice to have:
+- Follow responsive [UI design](#ui-design) from [desktop demo](./screenshots/desktop-demo.gif) and [mobile demo](./screenshots/mobile-demo.gif).
 
-- Responsive design (look good on all devices: desktops, tablets & mobile phones).
-- Smooth animations (don't really need to be same as the demo, just do what you think is good).
-- Deploy the application to [render](https://render.com/).
+## UI Design
 
-# Technical Requirements
-
-You can use any front-end library/framework like React, Angular, Vue, ... or just simple things with HTML + CSS + Javascript (JQuery).
-
-- Products data:
-  - [`./app/data/shoes.json`](./app/data/shoes.json)
-  - If you can code a simple server on NodeJS-Express/ NestJS + PostgreSQL/ MongoDB, it's a plus. But it's not required. The APIs server should have these APIs:
-      - GET `/api/v1/products`: Get all products
-      - GET `/api/v1/products/:id`: Get a product by id
-      - POST `/api/v1/products`: Create a new product
-      - PUT `/api/v1/products/:id`: Update a product by id
-      - DELETE `/api/v1/products/:id`: Delete a product by id
-- Images & icons:
-  - [`./app/assets`](./app/assets)
+- Images & Icons:
+  - [`./src/assets`](./src/assets)
   - Product images are fetched directly from remote url in data
 - Fonts:
-  - [https://fonts.google.com/specimen/Rubik?query=Rubik](https://fonts.google.com/specimen/Rubik?query=Rubik)
+  - [Rubik](https://fonts.google.com/specimen/Rubik?query=Rubik)
 - Colors:
-  - `White: #FFFFFF`
-  - `Black: #303841`
-  - `Gray: #777777`
-  - `Yellow: #F6C90E`
+  - White text: `#FFFFFF`
+  - Black background: `#303841`
+  - Yellow primary color: `#F6C90E`
+  - Gray accent: `#777777`
 - CSS Properties:
-  - `Border Radius: 28px`
-  - `Card Padding: 12px 28px`
-  - `Spacing between 2 Cards: 40px`
-  - `Circle Product Item Size In Cart: 90px`
-  - `Plus, Minus, Remove Button Size: 28px`
-  - `Spacing between 2 Product Items in Your Cart: 40px`
-  - `Spacing between 2 Product Items in Our Products: 80px`
+  - Border Radius: `28px`
+  - Card Padding: 12px `28px`
+  - Spacing between 2 Cards: `40px`
+  - Circle Product Item Size In Cart: `90px`
+  - Plus, Minus, Remove Button Size: `28px`
+  - Spacing between 2 Product Items in Your Cart: `40px`
+  - Spacing between 2 Product Items in Our Products: `80px`
 
-# Submission
+## Authors
 
-After completing the assignment, please push the source code to remote repository (github/gitlab), then send us the link to your repository.
-
-Don't forget to add `README.md` which includes guide to run your project locally and heroku demo link.
-
-
-**GOOD LUCK!!!**
-
-![Your Code Work](./screenshots/meme.jpeg)
-
-# Contributors
-
-- Ben (from GO): [tranquangvu](https://github.com/tranquangvu)
-- Leo (from GO): [im-leeou](https://github.com/im-leeou)
+- Long Nguyen [@minhlong149](https://github.com/minhlong149)
