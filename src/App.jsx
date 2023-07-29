@@ -29,6 +29,9 @@ const cartReducer = (cart, action) => {
         return product;
       });
     }
+    case "load": {
+      return action.cart;
+    }
   }
 };
 
@@ -37,6 +40,7 @@ function App() {
   const [cart, dispatchCart] = useReducer(cartReducer, []);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const loadProducts = async () => {
     setLoading(true);
@@ -51,22 +55,35 @@ function App() {
     }
   };
 
+  const loadCart = () => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      dispatchCart({ type: "load", cart: JSON.parse(cart) });
+    }
+    setCartOpen(true);
+  };
+
   useEffect(() => {
     loadProducts();
+    loadCart();
   }, []);
+
+  const saveCart = () => {
+    if (cartOpen) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  };
+
+  useEffect(() => {
+    saveCart();
+  }, [cart]);
 
   const addToCart = (product) => {
     dispatchCart({ type: "add", product });
-    setProducts(
-      products.map((p) => (p.id === product.id ? { ...p, inCart: true } : p))
-    );
   };
 
   const removeFromCart = (product) => {
     dispatchCart({ type: "remove", product });
-    setProducts(
-      products.map((p) => (p.id === product.id ? { ...p, inCart: false } : p))
-    );
   };
 
   const increaseQuantity = (product) => {
@@ -85,9 +102,14 @@ function App() {
     return <h1>Something went wrong</h1>;
   }
 
+  const productsWithCart = products.map((product) => {
+    const productInCart = cart.find((p) => p.id === product.id);
+    return { ...product, inCart: !!productInCart };
+  });
+
   return (
     <main>
-      <Products products={products} addToCart={addToCart} />
+      <Products products={productsWithCart} addToCart={addToCart} />
       <Cart
         cart={cart}
         removeFromCart={removeFromCart}
