@@ -1,12 +1,17 @@
 # G-Sneaker
 
-A simple shopping cart as part of GO Intern Assignment.
+A simple MERN-stack shopping cart as part of *GO Intern Assignment*.
+
+- Live demo: <https://shoedipus-go-server.onrender.com/>
+- Without server: <https://shoedipus-go-app.vercel.app/>
 
 ## Table of Contents
 
 - [G-Sneaker](#g-sneaker)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
+    - [Development](#development)
+  - [Products data](#products-data)
   - [Features](#features)
   - [UI Design](#ui-design)
   - [Authors](#authors)
@@ -21,11 +26,21 @@ yarn build
 yarn start
 ```
 
-> You can also use `yarn dev` to run the server in development mode.
+### Development
+
+- Run `yarn database` to start the MongoDB database in a **Docker** container.
+- Run `yarn server` to start the Express server.
+- Run `yarn app` to start the React app.
+
+## Products data
+
+An Express server is used to serve products data from MongoDB database. REST API endpoints currently only include `GET /api/v1/products` to get all the products data.
+
+> The React app itself can serve products data from [`./src/data/shoes.json`](./src/data/shoes.json) file, without the need of the server.
 
 ## Features
 
-- Display all products data in `Our Products` section:
+- Display all [products data](#products-data) in `Our Products` section:
   - Each product will have name, description, price, image and `Add To Cart` button.
   - User are able to click on `Add To Cart` button to add the target product to their cart. Added product will have a check mark icon instead.
 
@@ -35,8 +50,10 @@ yarn start
   - User able to remove a product from cart.
   - Show total price of all products in car. When user increase/decrease product's amount or remove product, total price should be re-calculate correctly.
   - When there are no products in cart, we should show `Your cart is empty` message.
+  - Products in cart are persistent: When user visit the application, products are added before will be showed, user don't need to add products again.
 
 - Follow responsive [UI design](#ui-design) from [desktop demo](./screenshots/desktop-demo.gif) and [mobile demo](./screenshots/mobile-demo.gif).
+- Deploy the application to <https://shoedipus-go-server.onrender.com>.
 
 ## UI Design
 
