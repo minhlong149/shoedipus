@@ -238,15 +238,26 @@ img.product-checkout {
     "image price price"
     "image quantity remove";
   align-items: center;
+  row-gap: .25rem;
   column-gap: .5rem;
 }
 
-.cart-item-image {
+.cart-item-image-wrapper {
   grid-area: image;
-  width: 120px;
-  height: 120px;
+  border-radius: 50%;
+
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.cart-item-image {
+  max-width: 150%;
 
   rotate: -30deg;
+  filter: drop-shadow(-10px 20px 10px rgba(0, 0, 0, 0.2));
+  margin-left: -20px;
+  margin-top: -40px;
 }
 
 .cart-item-name {

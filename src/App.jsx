@@ -22,12 +22,14 @@ const cartReducer = (cart, action) => {
       });
     }
     case "decrease": {
-      return cart.map((product) => {
-        if (product.id === action.product.id) {
-          return { ...product, quantity: product.quantity - 1 };
-        }
-        return product;
-      });
+      return cart
+        .map((product) => {
+          if (product.id === action.product.id) {
+            return { ...product, quantity: product.quantity - 1 };
+          }
+          return product;
+        })
+        .filter((product) => product.quantity > 0);
     }
     case "load": {
       return action.cart;

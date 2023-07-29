@@ -11,13 +11,17 @@ export default function CartItem({
   const { name, image, price, color, quantity } = product;
   return (
     <article className="cart-item">
-      <img src={image} className="cart-item-image" alt={name} />
+      <div
+        className="cart-item-image-wrapper"
+        style={{ backgroundColor: color }}
+      >
+        <img src={image} className="cart-item-image" alt={name} />
+      </div>
       <h2 className="cart-item-name">{name}</h2>
       <p className="cart-item-price">{price}</p>
       <div className="cart-item-quantity-wrapper">
         <button
           onClick={() => decreaseQuantity(product)}
-          disabled={quantity === 1}
           className="cart-item-icon-wrapper cart-item-icon-wrapper__accent"
         >
           <img
